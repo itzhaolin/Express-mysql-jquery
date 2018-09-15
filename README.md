@@ -1,5 +1,5 @@
-Node+mysql+jquery 实现登录注册
---
+Node(express)+mysql+jquery 实现登录注册
+-- 该项目基于express脚手架搭建
 > **首页**  
 > **登录**
 > **注册**
