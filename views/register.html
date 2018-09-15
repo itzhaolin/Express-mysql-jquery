@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>myApp</title>
+</head>
+
+<body>
+    <h2>注册界面</h2>
+    <form id="form">
+        <input type="text" name="name" />
+        <input type="text" name="pwd" />
+        <input type="submit" value="提交" />
+    </form>
+</body>
+
+</html>
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    $('#form').on('submit', function (e) {
+        // 阻止表单默认提交事件
+        e.preventDefault()
+        $.ajax({
+            url: '/register',
+            type: 'post',
+            data: $('#form').serialize(),
+            success: function (data) {
+                console.log('..', data)
+                alert(data.msg)
+            }
+        })
+    })
+</script>

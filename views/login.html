@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>myApp</title>
+</head>
+
+<body>
+    <h2>登录界面</h2>
+    <form id="form">
+        <input type="text" name="name" />
+        <input type="text" name="pwd" />
+        <input type="submit" value="提交" />
+    </form>
+</body>
+
+</html>
+<script src="/node_modules/jquery/dist/jquery.min.js"></script>
+<script>
+    $('#form').on('submit', function (e) {
+        // 阻止表单默认提交事件
+        e.preventDefault()
+        $.ajax({
+            url: '/login',
+            type: 'post',
+            data: $('#form').serialize(),
+            success: function (data) {
+                console.log('..', data)
+                if (data.status === 0) {
+                    alert('账户密码正确,登录成功!')
+                } else {
+                    alert('账户名或密码错误,请重新输入!')
+                }
+            }
+        })
+    })
+</script>
